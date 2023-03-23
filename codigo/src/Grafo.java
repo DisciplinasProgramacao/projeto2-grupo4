@@ -25,6 +25,12 @@
 /** 
  * Classe básica para um Grafo simples não direcionado.
  */
+
+ import java.io.FileWriter;
+
+import LeituraDados.Item;
+
+import java.io.FileReader;
 public class Grafo {
     public final String nome;
     private ABB<Vertice> vertices;
@@ -59,7 +65,12 @@ public class Grafo {
     }
 
     public void salvar(String nomeArquivo){
-        
+        Vertice arrayVertice[] = new Vertice[vertices.size()];
+        vertices.allElements(arrayVertice);
+        for (Vertice vertice : arrayVertice) {
+            System.out.println(vertice.getId());
+            System.out.println(vertice.toString());
+        }
     }
     
     /**
