@@ -1,4 +1,4 @@
-package LeituraDados;
+package grupo4.LeituraDados;
 
 public class Vizinho {
     private int id;

@@ -1,5 +1,6 @@
-import java.util.TreeMap;
-/** 
+package grupo4;
+
+/**
  * MIT License
  *
  * Copyright(c) 2021-23 João Caram <caram@pucminas.br>
@@ -26,6 +27,10 @@ import java.util.TreeMap;
  /**
   * Classe que encapsula uma árvore binária de buscas
   */
+
+import java.util.TreeMap;
+
+
 public class ABB<T> {
 
     private TreeMap<Integer, T> data;

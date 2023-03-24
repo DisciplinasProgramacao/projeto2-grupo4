@@ -1,5 +1,6 @@
-import LeituraDados.Item;
-import LeituraDados.Leitura;
+package grupo4;
+
+import grupo4.LeituraDados.Leitura;
 
 public class App {
 

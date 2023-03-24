@@ -1,4 +1,6 @@
-/** 
+package grupo4;
+
+/**
  * MIT License
  *
  * Copyright(c) 2021-23 João Caram <caram@pucminas.br>
@@ -26,11 +28,6 @@
  * Classe básica para um Grafo simples não direcionado.
  */
 
- import java.io.FileWriter;
-
-import LeituraDados.Item;
-
-import java.io.FileReader;
 public class Grafo {
     public final String nome;
     private ABB<Vertice> vertices;

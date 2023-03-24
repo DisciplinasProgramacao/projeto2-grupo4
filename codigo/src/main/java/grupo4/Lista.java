@@ -1,5 +1,6 @@
-import java.util.LinkedList;
-/** 
+package grupo4;
+
+/**
  * MIT License
  *
  * Copyright(c) 2021-23 João Caram <caram@pucminas.br>
@@ -23,7 +24,9 @@ import java.util.LinkedList;
  * SOFTWARE.
  */
 
- /** Classe para encapsular uma lista duplamente encadeada */
+import java.util.LinkedList;
+
+/** Classe para encapsular uma lista duplamente encadeada */
 public class Lista<T> {
 
     private LinkedList<T> data;

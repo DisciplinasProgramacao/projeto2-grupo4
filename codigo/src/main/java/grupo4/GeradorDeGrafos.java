@@ -1,7 +1,7 @@
-import LeituraDados.Item;
+package grupo4;
 
+import grupo4.LeituraDados.Item;
 import java.util.List;
-
 import static java.util.Objects.isNull;
 
 public class GeradorDeGrafos {
