@@ -34,8 +34,21 @@ public class Grafo {
     public final String nome;
     private ABB<Vertice> vertices;
 
-    public static Grafo grafoCompleto(int ordem){
-        return null;
+    public static Grafo grafoCompleto(int ordem, String nomeGrafo){
+
+        Grafo grafo = new Grafo(nomeGrafo);
+        for(int i = 0; i < ordem; i++){
+            grafo.addVertice(i);
+        }
+
+        for(int verticeAtual = 0; verticeAtual < ordem; verticeAtual++){
+            for(int verticeDestino = 0; verticeDestino < ordem; verticeDestino++){
+                if(verticeAtual != verticeDestino) {
+                    grafo.addAresta(verticeAtual, verticeDestino, 0);
+                }
+            }
+        }
+        return grafo;
     }
 
     /**
