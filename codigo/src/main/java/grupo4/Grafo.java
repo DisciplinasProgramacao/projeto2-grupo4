@@ -24,7 +24,9 @@ package grupo4;
  * SOFTWARE.
  */
 
-/** 
+import static java.util.Objects.isNull;
+
+/**
  * Classe básica para um Grafo simples não direcionado.
  */
 
@@ -86,7 +88,11 @@ public class Grafo {
     }
 
     public Vertice existeVertice(int idVertice){
-        return null;
+        Vertice vertice = vertices.find(idVertice);
+        if (isNull(vertice)) {
+            return null;
+        }
+        return vertice;
     }
 
     /**
