@@ -91,7 +91,7 @@ public class Grafo {
      * Verifica se um grafo já possui um vértice passado como parâmetro.
      * Caso a vértice já exista, o comando é ignorado e retorna NULL.
      * @param idVertice Id do vértice a ser verificado
-     * @return Vertice se não existe, NULL caso contrário
+     * @return Vertice se existe, NULL caso contrário
      */
     public Vertice existeVertice(int idVertice){
         Vertice vertice = vertices.find(idVertice);
@@ -120,22 +120,35 @@ public class Grafo {
 
     }
 
-
     public Aresta removeAresta(int origem, int destino){
         return null;
     }
 
+    /**
+     * Checa se existe uma aresta entre dois vértices A e B
+     * @param verticeA Vértice A
+     * @param verticeB Vértice B
+     * @return Aresta caso exista, NULL caso contrário
+     */
     public Aresta existeAresta(int verticeA, int verticeB){
-       return null;
+        Vertice va = this.existeVertice(verticeA);
+        Vertice vb = this.existeVertice(verticeB);
+
+        if (va != null) {
+            Aresta aresta = va.existeAresta(verticeB);
+            if (aresta != null) return aresta;
+        }
+        if (vb != null) return vb.existeAresta(verticeA);
+
+        return null;
     }
-    
-    
+
     public boolean completo(){
        return false;
     }
 
     public Grafo subGrafo(Lista<Integer> vertices){
-        Grafo subgrafo = new Grafo("Subgrafo de "+this.nome);
+        Grafo subgrafo = new Grafo("Subgrafo de " + this.nome);
         
         return subgrafo;
     }
