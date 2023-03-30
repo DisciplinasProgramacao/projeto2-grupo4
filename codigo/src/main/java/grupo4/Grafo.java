@@ -87,6 +87,12 @@ public class Grafo {
         return null;
     }
 
+    /**
+     * Verifica se um grafo já possui um vértice passado como parâmetro.
+     * Caso a vértice já exista, o comando é ignorado e retorna NULL.
+     * @param idVertice Id do vértice a ser verificado
+     * @return Vertice se não existe, NULL caso contrário
+     */
     public Vertice existeVertice(int idVertice){
         Vertice vertice = vertices.find(idVertice);
         if (isNull(vertice)) {
