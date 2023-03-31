@@ -139,6 +139,11 @@ public class Grafo {
         return null;
     }
 
+    /**
+     * Verifica se o grafo é completo, ou seja, se todos os vértices do grafo estão conectados entre si.
+     *
+     * @return true se o grafo é completo, false caso contrário.
+     */
     public boolean completo(){
         int cont = 0;
 
@@ -160,6 +165,13 @@ public class Grafo {
        return false;
     }
 
+    /**
+     * Cria um grafo completo com a ordem e nome especificados.
+     *
+     * @param ordem A ordem do grafo (número de vértices).
+     * @param nomeGrafo O nome do grafo.
+     * @return Um objeto Grafo completo.
+     */
     public static Grafo grafoCompleto(int ordem, String nomeGrafo){
 
         Grafo grafo = new Grafo(nomeGrafo);
