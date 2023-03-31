@@ -34,23 +34,6 @@ public class Grafo {
     public final String nome;
     private ABB<Vertice> vertices;
 
-    public static Grafo grafoCompleto(int ordem, String nomeGrafo){
-
-        Grafo grafo = new Grafo(nomeGrafo);
-        for(int i = 0; i < ordem; i++){
-            grafo.addVertice(i);
-        }
-
-        for(int verticeAtual = 0; verticeAtual < ordem; verticeAtual++){
-            for(int verticeDestino = 0; verticeDestino < ordem; verticeDestino++){
-                if(verticeAtual != verticeDestino) {
-                    grafo.addAresta(verticeAtual, verticeDestino, 0);
-                }
-            }
-        }
-        return grafo;
-    }
-
     /**
      * Construtor. Cria um grafo vazio com um nome escolhido pelo usuário. Em caso de nome não informado 
      * (string vazia), recebe o nome genérico "Grafo"
@@ -157,7 +140,41 @@ public class Grafo {
     }
 
     public boolean completo(){
+        int cont = 0;
+
+        Vertice arrayVertice[] = new Vertice[vertices.size()];
+        vertices.allElements(arrayVertice);
+        for (Vertice vertice : arrayVertice) {
+            for (Vertice verticeASerComparado : arrayVertice) {
+                if(vertice.existeAresta(verticeASerComparado.getId()) != null &&
+                   vertice.getId() != verticeASerComparado.getId()){
+                    cont++;
+
+                }
+            }
+        }
+
+        if(vertices.size() * (vertices.size() - 1) == cont){
+            return true;
+        }
        return false;
+    }
+
+    public static Grafo grafoCompleto(int ordem, String nomeGrafo){
+
+        Grafo grafo = new Grafo(nomeGrafo);
+        for(int i = 1; i <= ordem; i++){
+            grafo.addVertice(i);
+        }
+
+        for(int verticeAtual = 1; verticeAtual <= ordem; verticeAtual++){
+            for(int verticeDestino = 1; verticeDestino < ordem; verticeDestino++){
+                if(verticeAtual != verticeDestino) {
+                    grafo.addAresta(verticeAtual, verticeDestino, 0);
+                }
+            }
+        }
+        return grafo;
     }
 
     public Grafo subGrafo(Lista<Integer> vertices){

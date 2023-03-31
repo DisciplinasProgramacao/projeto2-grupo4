@@ -10,5 +10,9 @@ public class App {
         System.out.println(g.nome);
 
         g.salvar("");
+
+        Grafo g2 = new Grafo("Grafo 2");
+        Grafo grafoCompleto = g2.grafoCompleto(5, "Grafo completo");
+        System.out.println(grafoCompleto.completo());
     }
 }
