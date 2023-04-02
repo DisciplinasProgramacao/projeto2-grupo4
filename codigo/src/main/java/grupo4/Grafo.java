@@ -185,6 +185,12 @@ public class Grafo {
         return grafo;
     }
 
+    /**
+     * Gera um subgrafo a partir de uma lista de vértices. Caso algum dos vértices não exista no grafo, retorna null.
+     * Caso exista aresta entre dois vértices da lista, essa aresta será adicionada no subgrafo
+     * @param vertices Lista de vértices para criar o subgrafo
+     * @return Subgrafo com os vértices informados e suas arestas entre si
+     */
     public Grafo subGrafo(Lista<Integer> vertices){
         Grafo subgrafo = new Grafo("Subgrafo de " + this.nome);
 
