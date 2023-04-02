@@ -113,7 +113,6 @@ public class Grafo {
             adicionou = (saida.addAresta(destino, peso)&&chegada.addAresta(origem, peso));
         }
         return adicionou;
-
     }
 
     public Aresta removeAresta(int origem, int destino){
@@ -159,10 +158,7 @@ public class Grafo {
             }
         }
 
-        if(vertices.size() * (vertices.size() - 1) == cont){
-            return true;
-        }
-       return false;
+        return vertices.size() * (vertices.size() - 1) == cont;
     }
 
     /**
@@ -191,6 +187,25 @@ public class Grafo {
 
     public Grafo subGrafo(Lista<Integer> vertices){
         Grafo subgrafo = new Grafo("Subgrafo de " + this.nome);
+
+        Integer[] verticesArr  = new Integer[vertices.size()];
+        vertices.allElements(verticesArr);
+
+        for (Integer vertice : verticesArr) {
+            if (this.existeVertice(vertice) != null) subgrafo.addVertice(vertice);
+            else return null;
+        }
+
+        for (Integer vertice : verticesArr) {
+            ABB<Aresta> arestaABB = this.existeVertice(vertice).getArestas();
+            Aresta[] arestas = new Aresta[arestaABB.size()];
+            arestaABB.allElements(arestas);
+            for (Aresta aresta : arestas) {
+                int destino = aresta.destino();
+                if (subgrafo.existeVertice(destino) != null)
+                    subgrafo.addAresta(vertice, destino, aresta.peso());
+            }
+        }
         
         return subgrafo;
     }

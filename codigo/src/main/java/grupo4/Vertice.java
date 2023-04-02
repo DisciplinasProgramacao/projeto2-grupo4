@@ -48,8 +48,12 @@ public class Vertice {
     public int getId(){
         return this.id;
     }
-    
-    public boolean addAresta(int destino){
+
+     public ABB<Aresta> getArestas() {
+         return arestas;
+     }
+
+     public boolean addAresta(int destino){
         return false;
     }
 
