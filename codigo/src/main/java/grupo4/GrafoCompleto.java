@@ -8,8 +8,9 @@ public class GrafoCompleto extends Grafo {
      *
      * @param nome
      */
-    public GrafoCompleto(String nome) {
+    public GrafoCompleto(String nome, int ordem) {
         super(nome);
+        grafoCompleto(ordem);
     }
 
     /**

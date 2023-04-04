@@ -15,8 +15,7 @@ public class App {
         Grafo grafoCompleto = g2.grafoCompleto(5, "Grafo completo");
         System.out.println(grafoCompleto.completo());*/
 
-        GrafoCompleto grafobase = new GrafoCompleto("Grafo 2");
-        GrafoCompleto grafoCompleto = grafobase.grafoCompleto(5);
+        GrafoCompleto grafoCompleto = new GrafoCompleto("Grafo Completo", 5);
         System.out.println(grafoCompleto.completo());
     }
 }
