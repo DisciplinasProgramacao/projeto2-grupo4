@@ -30,9 +30,9 @@ import static java.util.Objects.isNull;
  * Classe básica para um Grafo simples não direcionado.
  */
 
-public class Grafo {
+public abstract class Grafo {
     public final String nome;
-    private ABB<Vertice> vertices;
+    protected ABB<Vertice> vertices;
 
     /**
      * Construtor. Cria um grafo vazio com um nome escolhido pelo usuário. Em caso de nome não informado 
@@ -98,7 +98,7 @@ public class Grafo {
     }
 
     /**
-     * Adiciona uma aresta entre dois vértices do grafo, caso os dois vértices existam no grafo. 
+     * Adiciona uma aresta entre dois vértices do grafo, caso os dois vértices existam no grafo.
      * Caso a aresta já exista, ou algum dos vértices não existir, o comando é ignorado e retorna FALSE.
      * @param origem Vértice de origem
      * @param destino Vértice de destino
@@ -162,36 +162,12 @@ public class Grafo {
     }
 
     /**
-     * Cria um grafo completo com a ordem e nome especificados.
-     *
-     * @param ordem A ordem do grafo (número de vértices).
-     * @param nomeGrafo O nome do grafo.
-     * @return Um objeto Grafo completo.
-     */
-    public static Grafo grafoCompleto(int ordem, String nomeGrafo){
-
-        Grafo grafo = new Grafo(nomeGrafo);
-        for(int i = 1; i <= ordem; i++){
-            grafo.addVertice(i);
-        }
-
-        for(int verticeAtual = 1; verticeAtual <= ordem; verticeAtual++){
-            for(int verticeDestino = 1; verticeDestino < ordem; verticeDestino++){
-                if(verticeAtual != verticeDestino) {
-                    grafo.addAresta(verticeAtual, verticeDestino, 0);
-                }
-            }
-        }
-        return grafo;
-    }
-
-    /**
      * Gera um subgrafo a partir de uma lista de vértices. Caso algum dos vértices não exista no grafo, retorna null.
      * Caso exista aresta entre dois vértices da lista, essa aresta será adicionada no subgrafo
      * @param vertices Lista de vértices para criar o subgrafo
      * @return Subgrafo com os vértices informados e suas arestas entre si
      */
-    public Grafo subGrafo(Lista<Integer> vertices){
+/*    public Grafo subGrafo(Lista<Integer> vertices){
         Grafo subgrafo = new Grafo("Subgrafo de " + this.nome);
 
         Integer[] verticesArr  = new Integer[vertices.size()];
@@ -214,7 +190,7 @@ public class Grafo {
         }
         
         return subgrafo;
-    }
+    }*/
     
     public int tamanho(){
         return Integer.MIN_VALUE;
