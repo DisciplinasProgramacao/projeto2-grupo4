@@ -54,35 +54,6 @@ public abstract class Grafo {
         return this.nome;
     }
 
-
-    public void carregar(String nomeArquivo){
-
-    }
-
-    public void salvar(String nomeArquivo){
-        Vertice arrayVertice[] = new Vertice[vertices.size()];
-        vertices.allElements(arrayVertice);
-        for (Vertice vertice : arrayVertice) {
-            System.out.println(vertice.getId());
-            System.out.println(vertice.toString());
-        }
-    }
-    
-    /**
-     * Adiciona um vértice com o id especificado. Ignora a ação e retorna false se já existir
-     * um vértice com este id
-     * @param id O identificador do vértice a ser criado/adicionado
-     * @return TRUE se houve a inclusão do vértice, FALSE se já existia vértice com este id
-     */
-    public boolean addVertice(int id){
-        Vertice novo = new Vertice(id);
-        return this.vertices.add(id, novo);
-    }
-
-    public Vertice removeVertice(int id){
-        return null;
-    }
-
     /**
      * Verifica se um grafo já possui um vértice passado como parâmetro.
      * Caso a vértice já exista, o comando é ignorado e retorna NULL.
@@ -98,42 +69,18 @@ public abstract class Grafo {
     }
 
     /**
-     * Adiciona uma aresta entre dois vértices do grafo, caso os dois vértices existam no grafo.
-     * Caso a aresta já exista, ou algum dos vértices não existir, o comando é ignorado e retorna FALSE.
-     * @param origem Vértice de origem
-     * @param destino Vértice de destino
-     * @param peso Peso da aresta
-     * @return TRUE se foi inserida, FALSE caso contrário
-     */
-    public boolean addAresta(int origem, int destino, int peso){
-        boolean adicionou = false;
-        Vertice saida = this.existeVertice(origem);
-        Vertice chegada = this.existeVertice(destino);
-        if(saida!=null && chegada !=null){
-            adicionou = (saida.addAresta(destino, peso)&&chegada.addAresta(origem, peso));
-        }
-        return adicionou;
-    }
-
-    public Aresta removeAresta(int origem, int destino){
-        return null;
-    }
-
-    /**
      * Checa se existe uma aresta entre dois vértices A e B
      * @param verticeA Vértice A
      * @param verticeB Vértice B
      * @return Aresta caso exista, NULL caso contrário
      */
     public Aresta existeAresta(int verticeA, int verticeB){
-        Vertice va = this.existeVertice(verticeA);
-        Vertice vb = this.existeVertice(verticeB);
+        Vertice origem = this.existeVertice(verticeA);
+        Vertice destino = this.existeVertice(verticeB);
 
-        if (va != null) {
-            Aresta aresta = va.existeAresta(verticeB);
-            if (aresta != null) return aresta;
+        if (origem != null && destino != null) {
+            return origem.existeAresta(verticeB);
         }
-        if (vb != null) return vb.existeAresta(verticeA);
 
         return null;
     }
@@ -146,7 +93,7 @@ public abstract class Grafo {
     public boolean completo(){
         int cont = 0;
 
-        Vertice arrayVertice[] = new Vertice[vertices.size()];
+        Vertice[] arrayVertice = new Vertice[vertices.size()];
         vertices.allElements(arrayVertice);
         for (Vertice vertice : arrayVertice) {
             for (Vertice verticeASerComparado : arrayVertice) {
@@ -167,8 +114,8 @@ public abstract class Grafo {
      * @param vertices Lista de vértices para criar o subgrafo
      * @return Subgrafo com os vértices informados e suas arestas entre si
      */
-/*    public Grafo subGrafo(Lista<Integer> vertices){
-        Grafo subgrafo = new Grafo("Subgrafo de " + this.nome);
+    public Grafo subGrafo(Lista<Integer> vertices){
+        GrafoMutavel subgrafo = new GrafoDirecionado("Subgrafo de " + this.nome);
 
         Integer[] verticesArr  = new Integer[vertices.size()];
         vertices.allElements(verticesArr);
@@ -188,16 +135,32 @@ public abstract class Grafo {
                     subgrafo.addAresta(vertice, destino, aresta.peso());
             }
         }
-        
+
         return subgrafo;
-    }*/
-    
-    public int tamanho(){
-        return Integer.MIN_VALUE;
     }
 
+    /**
+     * Retorna o tamanho (V + E) do grafo
+     * @return Tamanho do grafo
+     */
+    public int tamanho(){
+        int somaArestas = 0;
+        Vertice[] verticesArr = new Vertice[vertices.size()];
+        this.vertices.allElements(verticesArr);
+
+        for (Vertice vertice : verticesArr) {
+            somaArestas += vertice.grau();
+        }
+
+        return somaArestas + this.ordem();
+    }
+
+    /**
+     * Retorna a ordem do grafo
+     * @return Ordem do grafo
+     */
     public int ordem(){
-        return Integer.MIN_VALUE;
+        return this.vertices.size();
     }
 
 }

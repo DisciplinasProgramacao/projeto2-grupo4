@@ -78,10 +78,14 @@ public class Vertice {
     public Aresta removeAresta(int destino){
         return this.arestas.remove(destino);
     }
-  
-  
+
+
+     /**
+      * Retorna o grau do vértice
+      * @return Grau do vértice
+      */
     public int grau(){
-        return Integer.MIN_VALUE;
+        return this.arestas.size();
     }
 
     /**
