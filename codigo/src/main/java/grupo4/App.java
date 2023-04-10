@@ -14,7 +14,7 @@ public class App {
 //        System.out.println(grafoCompleto.completo());
 
         GrafoCompleto grafoCompleto = new GrafoCompleto("Grafo Completo", 5);
-        System.out.println(grafoCompleto.completo());
+        grafoCompleto.salvar(null);
 
 //        GrafoMutavel naoDirecionado = new GrafoNaoDirecionado("naoDirecionado");
 //        naoDirecionado.addVertice(1);

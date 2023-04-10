@@ -28,7 +28,9 @@ import java.util.ArrayDeque;
 import java.util.List;
 import java.util.Queue;
 import java.util.Stack;
-
+import java.io.BufferedWriter;
+import java.io.*;
+import java.util.Date;
 import static java.util.Objects.isNull;
 
 /**
@@ -234,4 +236,47 @@ public abstract class Grafo {
         return sb.toString();
     }
 
+public void salvar(){
+    Date dataHoraAtual = new Date();
+    try {
+        BufferedWriter saida = new BufferedWriter(new FileWriter(dataHoraAtual.toString().concat(".json")));
+        saida.write(this.toString(), 0, 0);
+        saida.close();    
+    } catch (Exception e) {
+        // TODO: handle exception
+    }
+}
+
+public void salvar(String fileName){
+    try {
+        BufferedWriter saida = new BufferedWriter(new FileWriter(fileName));
+        saida.write(this.toString(), 0, 0);
+        saida.close();    
+    } catch (Exception e) {
+        // TODO: handle exception
+    }
+}
+
+public String toString(){
+    Vertice arrayVertice[] = new Vertice[vertices.size()];
+    vertices.allElements(arrayVertice);
+    String json = new String("[\n");
+    for (Vertice vertice : arrayVertice) {
+        json = json.concat("{\n\"id\":"+vertice.getId()+",\n\"vizinhos\": [\n");
+        //System.out.println("{"+vertice.getId());
+        Aresta arrayArestas[]  = new Aresta[vertice.getArestas().size()];
+        vertice.getArestas().allElements(arrayArestas);
+        for (Aresta aresta: arrayArestas) {
+            json = json.concat("{\n\"id\":" + aresta.destino() + ",\n\"peso\": "+1+"\n},\n");
+            //System.out.println("Destino da aresta: " + aresta.destino());
+
+        }
+        json = json.substring(0, json.length()-2);
+        json = json.concat("\n]\n},");
+    }
+    json = json.substring(0, json.length()-1);
+    json = json.concat("\n]");
+    return json;
+
+}
 }
