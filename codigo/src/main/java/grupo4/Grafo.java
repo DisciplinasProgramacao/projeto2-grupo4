@@ -24,6 +24,11 @@ package grupo4;
  * SOFTWARE.
  */
 
+import java.util.ArrayDeque;
+import java.util.List;
+import java.util.Queue;
+import java.util.Stack;
+
 import static java.util.Objects.isNull;
 
 /**
@@ -139,6 +144,54 @@ public abstract class Grafo {
         return subgrafo;
     }
 
+    // busca em profundidade
+    public Grafo dfs (int idVerticeInicial) {
+        GrafoNaoDirecionado grafoNaoDirecionado = new GrafoNaoDirecionado("Grafo gerado pela dfs");
+        Stack<Vertice> stack = new Stack<>();
+        stack.push(vertices.find(idVerticeInicial));
+        while (!stack.empty()) {
+            Vertice verticeAtual = stack.pop();
+            if (!verticeAtual.visitado()) {
+                verticeAtual.visitar();
+                grafoNaoDirecionado.addVertice(verticeAtual.getId());
+                List<Integer> vizinhos = verticeAtual.getVizinhos();
+                for (Integer vizinho: vizinhos) {
+                    Vertice verticeVizinho = vertices.find(vizinho);
+                    if (!verticeVizinho.visitado()) {
+                        stack.push(verticeVizinho);
+                        grafoNaoDirecionado.addVertice(vizinho);
+                        grafoNaoDirecionado.addAresta(verticeAtual.getId(), vizinho, 0);
+                    }
+                }
+            }
+        }
+        return grafoNaoDirecionado;
+    }
+
+    public Grafo bfs (int idVerticeInicial) {
+        GrafoNaoDirecionado grafoNaoDirecionado = new GrafoNaoDirecionado("Grafo gerado pela bfs");
+        Queue<Vertice> queue = new ArrayDeque<>();
+        Vertice vInicial = vertices.find(idVerticeInicial);
+        queue.add(vInicial);
+        vInicial.visitar();
+        grafoNaoDirecionado.addVertice(idVerticeInicial);
+
+        while (!queue.isEmpty()) {
+            Vertice vAtual = queue.remove();
+            List<Integer> vizinhos = vAtual.getVizinhos();
+            for (Integer vizinho: vizinhos) {
+                Vertice verticeVizinho = vertices.find(vizinho);
+                if (!verticeVizinho.visitado()) {
+                    verticeVizinho.visitar();
+                    grafoNaoDirecionado.addVertice(vizinho);
+                    grafoNaoDirecionado.addAresta(vAtual.getId(), vizinho, 0);
+                    queue.add(verticeVizinho);
+                }
+            }
+        }
+        return grafoNaoDirecionado;
+    }
+
     /**
      * Retorna o tamanho (V + E) do grafo
      * @return Tamanho do grafo
@@ -161,6 +214,24 @@ public abstract class Grafo {
      */
     public int ordem(){
         return this.vertices.size();
+    }
+
+    public String imprimirGrafo() {
+        StringBuilder sb = new StringBuilder();
+        Vertice[] vertic = new Vertice[vertices.size()];
+        vertic = vertices.allElements(vertic);
+        for (Vertice eachVertice : vertic) {
+            sb.append(eachVertice.getId());
+            sb.append(" -> ");
+            List<Integer> vizinhos = eachVertice.getVizinhos();
+            for (Integer eachVizinho : vizinhos) {
+                Vertice vizinhoVertice = vertices.find(eachVizinho);
+                sb.append(vizinhoVertice.getId());
+                sb.append(" ");
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
     }
 
 }
