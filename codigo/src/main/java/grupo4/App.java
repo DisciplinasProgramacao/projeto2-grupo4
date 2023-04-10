@@ -1,7 +1,5 @@
 package grupo4;
 
-import grupo4.LeituraDados.Leitura;
-
 public class App {
 
       

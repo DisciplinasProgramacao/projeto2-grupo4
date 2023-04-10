@@ -24,7 +24,10 @@ package grupo4;
  * SOFTWARE.
  */
 
- /** Classe Vertice para um grafo */
+import java.util.ArrayList;
+import java.util.List;
+
+/** Classe Vertice para um grafo */
 public class Vertice {
     
     private ABB<Aresta> arestas;    
@@ -39,6 +42,16 @@ public class Vertice {
         this.id = id;
         this.arestas = new ABB<Aresta>();
         this.visitado = false;
+    }
+
+    public List<Integer> getVizinhos() {
+        List<Integer> vizinhos = new ArrayList<>();
+        Aresta[] todasArestas = new Aresta[arestas.size()];
+        todasArestas = arestas.allElements(todasArestas);
+        for (Aresta aresta: todasArestas) {
+            vizinhos.add(aresta.destino());
+        }
+        return vizinhos;
     }
     
     /**
