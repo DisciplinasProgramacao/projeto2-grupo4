@@ -1,12 +1,11 @@
 package org.example;
 
-import grupo4.GrafoCompleto;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.ArrayList;
+import grupo4.GrafoCompleto;
 
 public class GrafoCompletoTest {
     private GrafoCompleto grafoCompleto;
