@@ -1,6 +1,8 @@
 package org.example;
 
 import grupo4.GrafoCompleto;
+import grupo4.GrafoDirecionado;
+import grupo4.GrafoMutavel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,21 +12,20 @@ import java.util.ArrayList;
 
 public class GrafoCompletoTest {
     private GrafoCompleto grafoCompleto;
-
-    @BeforeEach
-    public void setUp() {
-        grafoCompleto = new GrafoCompleto("Grafo Completo", 5);
-    }
+    private GrafoMutavel grafoNaoCompleto;
 
     @Test
     public void testEhCompleto() {
+        grafoCompleto = new GrafoCompleto("Grafo Completo", 5);
         assertTrue(grafoCompleto.completo());
     }
 
-/*    @Test
+    @Test
     public void testNaoEhCompleto() {
-        // TODO: Adicionar verificação de completo com outro grafo filho da classe Grafo
-        // que não seja gerado com a classe GrafoCompleto
-    }*/
+        grafoNaoCompleto = new GrafoDirecionado("Grafo Mutavel");
+        grafoNaoCompleto.addVertice(1);
+        grafoNaoCompleto.addVertice(2);
+        assertFalse(grafoNaoCompleto.completo());
+    }
 
 }
