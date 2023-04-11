@@ -19,7 +19,7 @@ public class GrafoNaoDirecionadoTest {
         grafo.addVertice(1);
         grafo.addVertice(2);
         grafo.addAresta(1, 2, 5);
-        assertTrue(grafo.addAresta(2, 1, 3));
+        assertFalse(grafo.addAresta(2, 1, 3));
     }
 
     @Test
