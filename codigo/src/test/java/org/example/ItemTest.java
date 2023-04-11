@@ -11,9 +11,15 @@ import java.util.List;
 
 class ItemTest {
 
+    Item item;
+
+    @BeforeEach
+    void setUp() {
+        item = new Item();
+    }
+
     @Test
     void testSetAndGetId() {
-        Item item = new Item();
         int id = 1;
         item.setId(id);
         assertEquals(id, item.getId());
@@ -21,7 +27,6 @@ class ItemTest {
 
     @Test
     void testSetAndGetVizinhos() {
-        Item item = new Item();
         List<Vizinho> vizinhos = new ArrayList<>();
         Vizinho vizinho1 = new Vizinho();
         Vizinho vizinho2 = new Vizinho();

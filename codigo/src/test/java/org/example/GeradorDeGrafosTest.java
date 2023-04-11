@@ -1,18 +1,16 @@
 package org.example;
 
-import org.junit.jupiter.api.Test;
-
-import grupo4.GeradorDeGrafos;
-import grupo4.GrafoMutavel;
-import grupo4.LeituraDados.Item;
-
-import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.Test;
+
+import grupo4.GeradorDeGrafos;
+import grupo4.LeituraDados.Item;
+
 public class GeradorDeGrafosTest {
 
-
+    
 
     @Test
     public void testGerarGrafoSemItens() {
@@ -27,6 +25,4 @@ public class GeradorDeGrafosTest {
         items.add(item1);
         GeradorDeGrafos.gerarGrafoPelosItems(items, "grafo2");
     }
-
-
 }

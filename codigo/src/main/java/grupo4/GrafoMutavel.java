@@ -49,7 +49,7 @@ public abstract class GrafoMutavel extends Grafo {
 
     public void salvar(String nomeArquivo){
         Vertice[] arrayVertice = new Vertice[vertices.size()];
-        vertices.allElements(arrayVertice);
+        arrayVertice = vertices.allElements(arrayVertice);
         for (Vertice vertice : arrayVertice) {
             System.out.println(vertice.getId());
             System.out.println(vertice.toString());

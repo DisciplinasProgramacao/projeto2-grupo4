@@ -3,12 +3,9 @@ package org.example;
 import grupo4.GrafoCompleto;
 import grupo4.GrafoDirecionado;
 import grupo4.GrafoMutavel;
-import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.ArrayList;
 
 public class GrafoCompletoTest {
     private GrafoCompleto grafoCompleto;
