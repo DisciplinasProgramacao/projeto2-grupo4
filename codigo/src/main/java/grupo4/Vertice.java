@@ -44,6 +44,10 @@ public class Vertice {
         this.visitado = false;
     }
 
+    /**
+     * Retorna todos os vertices vizinhos
+     * @return Vizinhos do vertice
+     */
     public List<Integer> getVizinhos() {
         List<Integer> vizinhos = new ArrayList<>();
         Aresta[] todasArestas = new Aresta[arestas.size()];
@@ -73,12 +77,16 @@ public class Vertice {
      * @param destino Vértice de destino
      * @return TRUE se foi inserida, FALSE caso já existisse e não foi inserida.
      */
-
-
     public boolean addAresta(int destino, int peso){
         return this.arestas.add(destino,new Aresta(peso, destino));
     }
-    
+
+
+    /**
+     * Checa se existe aresta entre o vertice e um outro vertice de destino
+     * @param destino Vertice de destino
+     * @return TRUE se existe aresta ate destino, FALSE caso contrario
+     */
     public Aresta existeAresta(int destino){
         return this.arestas.find(destino);
     }

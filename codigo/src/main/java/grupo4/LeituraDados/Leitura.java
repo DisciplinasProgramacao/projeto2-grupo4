@@ -7,9 +7,9 @@ import java.io.*;
 import java.util.List;
 
 public class Leitura {
-    public static List<Item> gerarItemsDoJson() throws IOException {
+    public static List<Item> gerarItemsDoJson(String fileName) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        InputStream inputStream = new FileInputStream(new File("data.json"));
+        InputStream inputStream = new FileInputStream(new File(fileName != null ? fileName : "data.json"));
         TypeReference<List<Item>> typeReference = new TypeReference<List<Item>>() {};
         List<Item> items = mapper.readValue(inputStream, typeReference);
         return items;

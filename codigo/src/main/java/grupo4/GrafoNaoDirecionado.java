@@ -11,6 +11,13 @@ public class GrafoNaoDirecionado extends GrafoMutavel {
         super(nome);
     }
 
+    /**
+     * Adiciona arestas entre origem e destino, nos dois sentidos, caso origem e destino existam
+     * @param origem  Vértice de origem
+     * @param destino Vértice de destino
+     * @param peso    Peso da aresta
+     * @return TRUE se adicionado, FALSE se nao
+     */
     @Override
     public boolean addAresta(int origem, int destino, int peso) {
         boolean adicionou = false;
@@ -24,6 +31,12 @@ public class GrafoNaoDirecionado extends GrafoMutavel {
         return adicionou;
     }
 
+    /**
+     * Remove todas as arestas que existem entre origem e destino, caso origem e destino existam
+     * @param origem  Vértice de origem
+     * @param destino Vértice de destino
+     * @return Aresta removida ou NULL, caso não exista
+     */
     @Override
     public Aresta removeAresta(int origem, int destino){
         Aresta aresta1 = null;

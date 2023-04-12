@@ -1,5 +1,12 @@
 package grupo4;
 
+import grupo4.LeituraDados.Leitura;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Date;
+
 public abstract class GrafoMutavel extends Grafo {
 
     /**
@@ -44,15 +51,26 @@ public abstract class GrafoMutavel extends Grafo {
 
     public abstract Aresta removeAresta(int origem, int destino);
 
-    public void carregar(String nomeArquivo){
+    /**
+     * Carrega os dados de um arquivo para o grafo
+     * @param nomeArquivo Pathname do arquivo
+     * @throws IOException
+     */
+    public void carregar(String nomeArquivo) throws IOException {
+        GeradorDeGrafos.gerarGrafoPelosItems(Leitura.gerarItemsDoJson(nomeArquivo), "Grafo Mutavel");
     }
 
-    public void salvar(String nomeArquivo){
-        Vertice[] arrayVertice = new Vertice[vertices.size()];
-        arrayVertice = vertices.allElements(arrayVertice);
-        for (Vertice vertice : arrayVertice) {
-            System.out.println(vertice.getId());
-            System.out.println(vertice.toString());
+    /**
+     * Escreve o grafo com toString em um arquivo
+     * @param fileName Caminho do arquivo
+     */
+    public void salvar(String fileName){
+        try {
+            BufferedWriter saida = new BufferedWriter(new FileWriter(fileName));
+            saida.write(this.toString(), 0, 0);
+            saida.close();
+        } catch (Exception e) {
+            // TODO: handle exception
         }
     }
 }

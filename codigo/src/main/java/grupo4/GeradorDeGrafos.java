@@ -6,6 +6,12 @@ import static java.util.Objects.isNull;
 
 public class GeradorDeGrafos {
 
+    /**
+     * Método responsável por gerar um grafo mutável a partir de uma lista de itens e um nome de grafo.
+     * @param items Lista de objetos do tipo Item contendo as informações dos vértices e arestas do grafo a ser gerado.
+     * @param nomeGrafo String contendo o nome do grafo a ser gerado.
+     * @return GrafoMutavel contendo as informações do grafo gerado a partir da lista de itens.
+     */
     public static GrafoMutavel gerarGrafoPelosItems(List<Item> items, String nomeGrafo) {
         GrafoMutavel grafo = new GrafoDirecionado(nomeGrafo);
         if (items.isEmpty()) return grafo;

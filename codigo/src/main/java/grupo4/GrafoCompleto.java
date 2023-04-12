@@ -19,7 +19,6 @@ public class GrafoCompleto extends Grafo {
      * @param ordem A ordem do grafo (número de vértices).
      * @return Um objeto Grafo completo.
      */
-    // FIXME ARRUMA AE GABREU
     private GrafoCompleto grafoCompleto(int ordem) {
 
         for (int i = 1; i <= ordem; i++) {
