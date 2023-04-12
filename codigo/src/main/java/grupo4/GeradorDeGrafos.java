@@ -6,10 +6,11 @@ import static java.util.Objects.isNull;
 
 public class GeradorDeGrafos {
 
-    public static void gerarGrafoPelosItems(List<Item> items, String nomeGrafo) {
+    public static GrafoMutavel gerarGrafoPelosItems(List<Item> items, String nomeGrafo) {
         GrafoMutavel grafo = new GrafoDirecionado(nomeGrafo);
-        items.forEach(item -> {
+        if (items.isEmpty()) return grafo;
 
+        items.forEach(item -> {
             Vertice verticeInicial = grafo.existeVertice(item.getId());
             if (isNull(verticeInicial)) {
                 grafo.addVertice(item.getId());
@@ -23,5 +24,6 @@ public class GeradorDeGrafos {
                 grafo.addAresta(item.getId(), vizinho.getId(), vizinho.getPeso());
             });
         });
+        return grafo;
     }
 }

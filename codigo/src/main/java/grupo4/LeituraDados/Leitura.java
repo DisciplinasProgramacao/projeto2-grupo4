@@ -14,5 +14,4 @@ public class Leitura {
         List<Item> items = mapper.readValue(inputStream, typeReference);
         return items;
     }
-
 }

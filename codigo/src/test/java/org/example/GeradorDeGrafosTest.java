@@ -1,28 +1,35 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import grupo4.GeradorDeGrafos;
+import grupo4.GrafoDirecionado;
+import grupo4.GrafoMutavel;
+import grupo4.LeituraDados.Leitura;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import grupo4.GeradorDeGrafos;
-import grupo4.LeituraDados.Item;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GeradorDeGrafosTest {
 
-    
-
-    @Test
-    public void testGerarGrafoSemItens() {
-        List<Item> items = new ArrayList<>();
-        GeradorDeGrafos.gerarGrafoPelosItems(items, "grafo1");
+    private GrafoMutavel grafo;
+    @BeforeEach
+    void setUp() throws Exception {
+        grafo = new GrafoDirecionado("nome");
     }
 
     @Test
-    public void testGerarGrafoComItem() {
-        List<Item> items = new ArrayList<>();
-        Item item1 = new Item();
-        items.add(item1);
-        GeradorDeGrafos.gerarGrafoPelosItems(items, "grafo2");
+    public void testGerarGrafoComItens() throws IOException {
+        grafo = GeradorDeGrafos.gerarGrafoPelosItems(Leitura.gerarItemsDoJson(), "grafo1");
+        assertEquals(2, grafo.existeVertice(2).getId());
+        assertEquals(3, grafo.existeVertice(3).getId());
+    }
+
+    @Test
+    public void testGerarGrafoSemItens() {
+        grafo = GeradorDeGrafos.gerarGrafoPelosItems(new ArrayList<>(), "grafo2");
+        assertEquals(0, grafo.tamanho());
     }
 }

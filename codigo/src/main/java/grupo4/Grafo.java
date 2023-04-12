@@ -69,9 +69,6 @@ public abstract class Grafo {
      */
     public Vertice existeVertice(int idVertice){
         Vertice vertice = vertices.find(idVertice);
-        if (isNull(vertice)) {
-            return null;
-        }
         return vertice;
     }
 
