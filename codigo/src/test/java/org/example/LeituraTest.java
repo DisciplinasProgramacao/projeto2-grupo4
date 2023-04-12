@@ -12,7 +12,7 @@ class LeituraTest {
 
     @Test
     void testGerarItemsDoJson() throws IOException {
-        List<Item> items = Leitura.gerarItemsDoJson();
+        List<Item> items = Leitura.gerarItemsDoJson(null);
         assertNotNull(items);
         assertFalse(items.isEmpty());
     }

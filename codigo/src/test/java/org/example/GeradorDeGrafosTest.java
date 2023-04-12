@@ -22,7 +22,7 @@ public class GeradorDeGrafosTest {
 
     @Test
     public void testGerarGrafoComItens() throws IOException {
-        grafo = GeradorDeGrafos.gerarGrafoPelosItems(Leitura.gerarItemsDoJson(), "grafo1");
+        grafo = GeradorDeGrafos.gerarGrafoPelosItems(Leitura.gerarItemsDoJson(null), "grafo1");
         assertEquals(2, grafo.existeVertice(2).getId());
         assertEquals(3, grafo.existeVertice(3).getId());
     }
