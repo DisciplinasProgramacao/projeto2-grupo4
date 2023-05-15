@@ -1,0 +1,84 @@
+[
+{
+"id":0,
+"vizinhos": [
+{
+"id":1,
+"peso": 1
+},
+{
+"id":2,
+"peso": 1
+},
+{
+"id":3,
+"peso": 1
+}
+]
+},{
+"id":1,
+"vizinhos": [
+{
+"id":2,
+"peso": 1
+},
+{
+"id":4,
+"peso": 1
+},
+{
+"id":5,
+"peso": 1
+}
+]
+},{
+"id":2,
+"vizinhos": [
+{
+"id":8,
+"peso": 1
+}
+]
+},{
+"id":3,
+"vizinhos": [
+{
+"id":7,
+"peso": 1
+}
+]
+},{
+"id":4,
+"vizinhos": 
+[]
+},{
+"id":5,
+"vizinhos": 
+[]
+},{
+"id":7,
+"vizinhos": 
+[]
+},{
+"id":8,
+"vizinhos": 
+[
+{
+"id":7,
+"peso": 1
+}
+]
+},{
+"id":26,
+"vizinhos": 
+[]
+},{
+"id":77,
+"vizinhos": [
+{
+"id":26,
+"peso": 1
+}
+]
+}
+]
